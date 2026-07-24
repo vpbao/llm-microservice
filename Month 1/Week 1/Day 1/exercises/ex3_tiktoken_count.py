@@ -16,26 +16,35 @@ Acceptance:
 
 from __future__ import annotations
 
+import tiktoken
+
 SAMPLES: list[str] = [
     "Hello world",
     "Tokenization splits text into subword units.",
     "Xin chào, đây là một câu tiếng Việt để so sánh số token.",
     "def add(a: int, b: int) -> int:\n    return a + b",
-    # TODO: thêm 1 đoạn dài (~1 đoạn văn)
 ]
+
+_ENC = tiktoken.get_encoding("cl100k_base")
 
 
 def count_tokens(text: str) -> int:
-    # TODO: dùng tiktoken encode và trả về len
-    raise NotImplementedError
+    return len(_ENC.encode(text))
 
 
-def cost_usd(input_tokens: int, output_tokens: int,
-             in_price_per_m: float, out_price_per_m: float) -> float:
-    # TODO: return (input_tokens/1e6)*in_price + (output_tokens/1e6)*out_price
-    raise NotImplementedError
+def cost_usd(
+    input_tokens: int, output_tokens: int, in_price: float, out_price: float
+) -> float:
+    return (input_tokens / 1e6) * in_price + (output_tokens / 1e6) * out_price
 
 
 if __name__ == "__main__":
-    # TODO: in bảng cho SAMPLES, rồi in cost cho một request giả định
-    ...
+    print(f"{'chars':>6} {'tokens':>6} {'chars/tokens':>6} {'text'}")
+    for s in SAMPLES:
+        chars = len(s)
+        tokens = count_tokens(s)
+        ratio = chars / tokens
+        print(f"{chars:>6} {tokens:>6} {ratio:>6.2f}  {s[:40]!r}")
+
+    c = cost_usd(1200, 400, 0.15, 0.60)
+    print(f"\nRequest: ${c:.6f}")

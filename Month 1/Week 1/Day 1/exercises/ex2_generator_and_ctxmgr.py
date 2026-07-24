@@ -19,15 +19,16 @@ from time import perf_counter
 
 
 def read_lines(path: str) -> Iterator[str]:
-    with open(path, encoding='utf-8') as f:
+    with open(path, encoding="utf-8") as f:
         for line in f:
-            yield line.rstrip('\n')
+            yield line.rstrip("\n")
+
 
 @contextmanager
 def timer(label: str) -> Generator[None]:
     t0 = perf_counter()
     yield
-    ms =  (perf_counter() - t0) * 1000
+    ms = (perf_counter() - t0) * 1000
     print(f"{label}: {ms:.1f} ms")
 
 

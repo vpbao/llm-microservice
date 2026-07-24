@@ -13,23 +13,40 @@ Acceptance:
 from __future__ import annotations
 
 from dataclasses import dataclass
+from enum import StrEnum
 
 
-# TODO: thay ví dụ mẫu dưới bằng class PHP của bạn, chuyển sang Python typed.
+class Currency(StrEnum):
+    USD = "USD"
+    VND = "VND"
+
+
 @dataclass(frozen=True)
 class Money:
     amount_cents: int
-    currency: str = "USD"
+    currency: Currency = Currency.USD
 
     def add(self, other: Money) -> Money:
-        # TODO: raise nếu khác currency; trả về Money mới
-        raise NotImplementedError
+        if other.currency != self.currency:
+            raise ValueError("Cannot add different currencies.")
+
+        return Money(self.amount_cents + other.amount_cents, self.currency)
 
     def format(self) -> str:
-        # TODO: trả về ví dụ "$12.34"
-        raise NotImplementedError
+        return f"${self.amount_cents / 100:.2f}"
 
 
 if __name__ == "__main__":
-    # TODO: in vài ví dụ để tự kiểm tra
-    ...
+    usd = Money(100, Currency.USD)
+    other_usd = Money(200, Currency.USD)
+
+    print(usd.add(other_usd).format())
+
+    vnd = Money(50000, Currency.VND)
+    print(vnd.format())  # $500.00 (format chưa phân biệt ký hiệu tiền tệ)
+
+    # thử nhánh raise: cộng USD với VND -> ValueError
+    try:
+        usd.add(vnd)
+    except ValueError as e:
+        print(f"raised: {e}")  # raised: Cannot add different currencies.
