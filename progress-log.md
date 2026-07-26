@@ -8,7 +8,7 @@
 ## Current position
 - **Month:** 1 — Foundations (Python/FastAPI for AI + LLM mental model)
 - **Week:** 1 (27 Jul → 2 Aug 2026)
-- **Day:** Day 2 — NOT STARTED (next)
+- **Day:** Day 2 — IN PROGRESS (unlocked 28 Jul; idioms deep-dive + hardened API calls)
 - **Current project:** Project 1 — Streaming LLM Microservice (`llm-microservice`)
 - **Current milestone:** M1 — stand up a production-shaped AI service; explain the LLM request lifecycle end to end
 - **Completed days:** 1
@@ -20,7 +20,7 @@
 | Day | Date | Topic | Status | Confidence (1–5) | Deliverable |
 |-----|------|-------|--------|------------------|-------------|
 | 1 | Mon 27 Jul 2026 | Modern Python typing for AI engineers → LLM mental model | ✅ completed | 4 | Repo scaffolded (uv/ruff/mypy strict/pytest/pre-commit); 4 exercises; `hello_llm.py` (token usage via OpenRouter); Notes 8-Q test; 2 commits |
-| 2 | Tue 28 Jul 2026 | Idioms deep-dive (comprehensions, generators, decorators) + first API calls hardened | pending | — | — |
+| 2 | Tue 28 Jul 2026 | Idioms deep-dive (comprehensions, generators, decorators) + first API calls hardened | in-progress | — | Day 2 folder: Lesson + Notes (8-Q generator/decorator, error taxonomy) + 4 exercise stubs (comprehensions, decorators, generator pipeline, hardened httpx client) + Interview/Resources/Architecture/GitCommit/Reflection |
 
 *(Rows are added as each day is unlocked. Status: pending → in-progress → completed.)*
 
