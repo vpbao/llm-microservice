@@ -1,6 +1,6 @@
 # Reflection — Day 2
 
-**Ngày:** 2 · **Thời lượng thực tế:** ___ h · **Confidence (1–5):** ___
+**Ngày:** 2 · **Thời lượng thực tế:** 4 h · **Confidence (1–5):** 4
 
 ## 3 điều học được hôm nay
 1. decorator - bao bọc 1 hàm, truyền vào hàm và trả về hàm được bao, không thay đổi logic chính.
